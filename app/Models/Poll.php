@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Poll extends Model
 {
+    protected $fillable = [
+        'title',
+        'question',
+        'allow_multiple_choices',
+        'allow_vote_change',
+        'results_public',
+        'duration',
+    ];
+
     /**
      * Get the user that owns the poll.
      */
