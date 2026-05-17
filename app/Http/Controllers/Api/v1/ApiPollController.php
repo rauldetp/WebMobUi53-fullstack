@@ -130,9 +130,19 @@ class ApiPollController extends Controller
             });
         }
 
+        $userVoteOptionIds = [];
+        if ($user) {
+            $userVoteOptionIds = PollVote::where('poll_id', $poll->id)
+                ->where('user_id', $user->id)
+                ->pluck('poll_option_id')
+                ->toArray();
+        }
+
         return response()->json([
-            'poll'         => $poll,
-            'show_results' => $showResults,
+            'poll'                 => $poll,
+            'show_results'         => $showResults,
+            'is_owner'             => $isOwner,
+            'user_vote_option_ids' => $userVoteOptionIds,
         ]);
     }
 

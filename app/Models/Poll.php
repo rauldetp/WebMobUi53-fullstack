@@ -17,6 +17,11 @@ class Poll extends Model
         'duration',
     ];
 
+    protected $casts = [
+        'ends_at'    => 'datetime',
+        'started_at' => 'datetime',
+    ];
+
     /**
      * Get the user that owns the poll.
      */
